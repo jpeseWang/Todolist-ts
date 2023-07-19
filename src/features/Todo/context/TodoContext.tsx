@@ -1,33 +1,15 @@
-// TodoContext.tsx
+/* eslint-disable indent */
 import React, { createContext, useReducer } from "react";
-
-interface Todo {
-  id: number;
-  text: string;
-  completed: boolean;
-}
-
-interface TodoState {
-  todos: Todo[];
-  filter: string;
-}
+import { TodoState, Action } from "../../../interfaces/interfaces";
 export const FILTER_OPTIONS = {
   ALL: "all",
   ACTIVE: "active",
   COMPLETED: "completed",
 };
-
 interface TodoContextProps {
   state: TodoState;
   dispatch: React.Dispatch<Action>;
 }
-
-type Action =
-  | { type: "ADD_TODO"; payload: Todo }
-  | { type: "TOGGLE_TODO"; payload: number }
-  | { type: "DELETE_TODO"; payload: number }
-  | { type: "SET_FILTER"; payload: string }
-  | { type: "EDIT_TODO"; payload: { id: number; text: string } };
 
 const initialState: TodoState = {
   todos: [],
@@ -70,11 +52,17 @@ const todoReducer = (state: TodoState, action: Action): TodoState => {
         ...state,
         todos: state.todos.map((todo) =>
           todo.id === action.payload.id
-            ? { ...todo, text: action.payload.text }
+            ? {
+                ...todo,
+                text: action.payload.text,
+                deadline: action.payload.deadline,
+              }
             : todo
         ),
       };
-
+    case "SET_TODOS": {
+      return { ...state, todos: action.payload };
+    }
     default:
       return state;
   }

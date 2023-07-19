@@ -1,0 +1,36 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+.form-container {
+  width: 70%;
+  height: 90%;
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+}
+.title {
+  color: #414655;
+  font-family: "Roboto Slab", serif;
+  margin: 17px 20px;
+}
+button:hover {
+  opacity: 0.6;
+}
+
+p {
+  font-style: italic;
+  color: #696868;
+  font-size: 18px;
+}
+.list {
+  overflow-y: auto;
+  max-height: 350px;
+}

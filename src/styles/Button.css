@@ -1,0 +1,61 @@
+.btn-group {
+  color: white;
+  font-family: "Source Sans 3", sans-serif;
+  border: none;
+  font-size: 120%;
+  border-radius: 40px;
+  padding: 10px 35px;
+  margin: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+}
+
+.btn-primary {
+  background-color: #409eff;
+}
+
+.btn-cancel {
+  background-color: #6c757d;
+  color: white;
+}
+.btn-finish {
+  background-color: #39da54;
+  color: white;
+}
+.btn-start {
+  color: white;
+  background-color: #ff7561;
+}
+
+.btn-delete {
+  background-color: #fe6463;
+  color: white;
+  border: 2px solid #fe6463;
+}
+.btn-delete-2 {
+  background-color: transparent;
+  color: #fe6463;
+  border: 2px solid #fe6463;
+  padding: 5px 20px;
+}
+.btn-filter {
+  background-color: transparent;
+  border: 2px solid #505051;
+  color: #505051;
+}
+.btn-edit {
+  background-color: transparent;
+  color: #409eff;
+  border: 2px solid #409eff;
+  padding: 5px 20px;
+}
+.btn-filter:active {
+  background-color: #6c757d;
+  border: 2px solid #6c757d;
+  color: white;
+}
+.btn:hover {
+  opacity: 0.6;
+}

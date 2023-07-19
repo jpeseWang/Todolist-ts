@@ -1,43 +1,18 @@
-import React, { useState } from "react";
-import TodoForm from "./components/TodoForm";
-import TodoList from "./components/TodoList";
-import { TodoProvider } from "./context/TodoContext";
-import UpdateModal from "./components/UpdateModal";
-import FilterOptions from "./components/FilterOptions";
-
-const App: React.FC = () => {
-  const [updateTodo, setUpdateTodo] = useState({ id: 0, text: "" });
-
-  const openUpdateModal = (todoId: number, todoText: string) => {
-    setUpdateTodo({
-      id: todoId,
-      text: todoText,
-    });
-  };
-
-  const closeUpdateModal = () => {
-    setUpdateTodo({ id: 0, text: "" });
-  };
-
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import { HomePage } from "./components/Home/Home";
+import { Todo } from "./features/Todo/Todo";
+import { ToastContainer } from "react-toastify";
+function App(): JSX.Element {
   return (
     <div>
-      <h1>Todo App</h1>
-      <TodoProvider>
-        <TodoForm />
-        <FilterOptions />
-        <TodoList openUpdateModal={openUpdateModal} />
-
-        {updateTodo.id !== 0 && (
-          <UpdateModal
-            isOpen={true}
-            onClose={closeUpdateModal}
-            todoId={updateTodo.id}
-            initialText={updateTodo.text}
-          />
-        )}
-      </TodoProvider>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="feature" element={<Todo />} />
+      </Routes>
+      <ToastContainer />
     </div>
   );
-};
+}
 
 export default App;

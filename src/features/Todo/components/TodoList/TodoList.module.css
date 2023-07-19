@@ -1,0 +1,20 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.noti {
+  margin-top: 100px;
+  color: rgb(233, 198, 42);
+}

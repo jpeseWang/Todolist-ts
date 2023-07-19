@@ -1,0 +1,29 @@
+.container {
+  background-color: var(--background-color);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.form-container {
+  width: 60%;
+  height: 70vh;
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+}
+img {
+  width: 50%;
+  height: 50%;
+  display: block;
+  transform: translateX(50%);
+}
+
+.description-text {
+  color: #696868;
+}
+a {
+  text-decoration: none;
+  color: white;
+}

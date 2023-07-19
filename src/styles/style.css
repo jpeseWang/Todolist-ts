@@ -1,0 +1,33 @@
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: white;
+  box-sizing: border-box;
+  border-radius: 10px;
+  z-index: 100;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.custom-modal {
+  background: transparent;
+  width: fit-content;
+}
+
+.custom-overlay {
+  background-color: white;
+}
