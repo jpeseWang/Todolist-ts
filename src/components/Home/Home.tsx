@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet, Link } from "react-router-dom";
 import styles from "./HomePage.module.css";
 import logo from "../../assets/images/homelogo.png";
-import classnames from "classnames";
+import classnames from 'classnames';
 import { Button } from "../Button/Button";
 import btn from "../../components/Button/Button.module.css";
 export function HomePage() {
