@@ -22,12 +22,3 @@
   outline: none;
   background: transparent;
 }
-
-.custom-modal {
-  background: transparent;
-  width: fit-content;
-}
-
-.custom-overlay {
-  background-color: white;
-}

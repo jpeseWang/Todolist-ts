@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
-import { TodoContext, FILTER_OPTIONS } from "../../context/TodoContext";
-import styles from "./Filters.module.scss";
+import React, { useContext, useState } from 'react';
+import { TodoContext, FILTER_OPTIONS } from '../../context/TodoContext';
+import styles from './Filters.module.scss';
 export const FilterOptions: React.FC = () => {
   const { state, dispatch } = useContext(TodoContext);
   const { filter } = state;
-  const [activeTab, setActiveTab] = useState("all");
+  const [activeTab, setActiveTab] = useState('all');
   const handleFilterChange = (newFilter: string) => {
-    dispatch({ type: "SET_FILTER", payload: newFilter });
+    dispatch({ type: 'SET_FILTER', payload: newFilter });
     setActiveTab(newFilter.toLowerCase());
   };
 
@@ -29,7 +29,7 @@ export const FilterOptions: React.FC = () => {
 
         <label
           className={`${styles.tab} ${
-            activeTab === "all" ? styles.active : ""
+            activeTab === 'all' ? styles.active : ''
           }`}
           htmlFor="radio-1"
         >
@@ -48,7 +48,7 @@ export const FilterOptions: React.FC = () => {
         />
         <label
           className={`${styles.tab} ${
-            activeTab === "pending" ? styles.active : ""
+            activeTab === 'pending' ? styles.active : ''
           }`}
           htmlFor="radio-2"
         >
@@ -67,7 +67,7 @@ export const FilterOptions: React.FC = () => {
         />
         <label
           className={`${styles.tab} ${
-            activeTab === "completed" ? styles.active : ""
+            activeTab === 'completed' ? styles.active : ''
           }`}
           htmlFor="radio-3"
         >

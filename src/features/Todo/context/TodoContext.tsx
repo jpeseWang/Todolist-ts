@@ -1,66 +1,62 @@
 /* eslint-disable indent */
-import React, { createContext, useReducer } from "react";
-import { TodoState, Action } from "../../../interfaces/interfaces";
+import React, { createContext, useReducer } from 'react';
+import { TodoState, Action } from '../../../interfaces/interfaces';
 export const FILTER_OPTIONS = {
-  ALL: "all",
-  ACTIVE: "active",
-  COMPLETED: "completed",
+  ALL: 'all',
+  ACTIVE: 'active',
+  COMPLETED: 'completed'
 };
 interface TodoContextProps {
-  state: TodoState;
-  dispatch: React.Dispatch<Action>;
+  state: TodoState
+  dispatch: React.Dispatch<Action>
 }
 
 const initialState: TodoState = {
   todos: [],
-  filter: "all",
+  filter: 'all'
 };
 
 const TodoContext = createContext<TodoContextProps>({
   state: initialState,
-  dispatch: () => {},
+  dispatch: () => {}
 });
 
 const todoReducer = (state: TodoState, action: Action): TodoState => {
   switch (action.type) {
-    case "ADD_TODO":
+    case 'ADD_TODO':
       return {
         ...state,
-        todos: [...state.todos, action.payload],
+        todos: [...state.todos, action.payload]
       };
-    case "TOGGLE_TODO":
+    case 'TOGGLE_TODO':
       return {
         ...state,
         todos: state.todos.map((todo) =>
           todo.id === action.payload
             ? { ...todo, completed: !todo.completed }
             : todo
-        ),
+        )
       };
-    case "DELETE_TODO":
+    case 'DELETE_TODO':
       return {
         ...state,
-        todos: state.todos.filter((todo) => todo.id !== action.payload),
+        todos: state.todos.filter((todo) => todo.id !== action.payload)
       };
-    case "SET_FILTER":
+    case 'SET_FILTER':
       return {
         ...state,
-        filter: action.payload,
+        filter: action.payload
       };
-    case "EDIT_TODO":
+    case 'EDIT_TODO':
       return {
         ...state,
         todos: state.todos.map((todo) =>
           todo.id === action.payload.id
-            ? {
-                ...todo,
-                text: action.payload.text,
-                deadline: action.payload.deadline,
-              }
+            ? { ...todo, text: action.payload.text, deadline: action.payload.deadline }
             : todo
-        ),
+        )
       };
-    case "SET_TODOS": {
+    case 'SET_TODOS': {
       return { ...state, todos: action.payload };
     }
     default:

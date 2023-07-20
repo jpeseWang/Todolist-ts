@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { TodoForm } from "./components/TodoForm/TodoForm";
-import { TodoList } from "./components/TodoList/TodoList";
-import { FilterOptions } from "./components/Filters/FilterOptions";
-import { TodoProvider } from "./context/TodoContext";
-import { UpdateModal } from "./components/modal/UpdateModal";
-import styles from "./Todo.module.css";
+import React, { useState } from 'react';
+import { TodoForm } from './components/TodoForm/TodoForm';
+import { TodoList } from './components/TodoList/TodoList';
+import { UpdateModal } from './modal/UpdateModal';
+import { FilterOptions } from './components/Filters/FilterOptions';
+import { TodoProvider } from './context/TodoContext';
+import styles from './Todo.module.css';
 export const Todo: React.FC = () => {
   const [updateTodo, setUpdateTodo] = useState({
     id: 0,
-    text: "",
-    deadline: "",
+    text: '',
+    deadline: ''
   });
 
   const openUpdateModal = (
@@ -20,17 +20,17 @@ export const Todo: React.FC = () => {
     setUpdateTodo({
       id: todoId,
       text: todoText,
-      deadline: todoDeadline,
+      deadline: todoDeadline
     });
   };
 
   const closeUpdateModal = () => {
-    setUpdateTodo({ id: 0, text: "", deadline: "" });
+    setUpdateTodo({ id: 0, text: '', deadline: '' });
   };
 
   return (
     <div className={styles.container}>
-      <div className={styles["form-container"]}>
+      <div className={styles['form-container']}>
         <h1 className={styles.title}>Tasks Management</h1>
         <p>
           &quot;Every day should be a good day. People fool themselves that

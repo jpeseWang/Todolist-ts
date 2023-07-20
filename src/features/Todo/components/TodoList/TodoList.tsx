@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import { TodoContext, FILTER_OPTIONS } from "../../context/TodoContext";
-import { TodoItem } from "../TodoItem/TodoItem";
-import styles from "./TodoList.module.css";
+import React, { useContext } from 'react';
+import { TodoContext, FILTER_OPTIONS } from '../../context/TodoContext';
+import { TodoItem } from '../TodoItem/TodoItem';
+import styles from './TodoList.module.css';
 interface TodoListProps {
   openUpdateModal: (
     todoId: number,
     todoText: string,
     todoDeadline: string
-  ) => void;
+  ) => void
 }
 
 export const TodoList: React.FC<TodoListProps> = ({ openUpdateModal }) => {
@@ -24,7 +24,7 @@ export const TodoList: React.FC<TodoListProps> = ({ openUpdateModal }) => {
   if (todos.length === 0) {
     return (
       <h1 className={styles.noti}>
-        Congratulations, no task need to be finished!{" "}
+        Congratulations, no task need to be finished!{' '}
         <i className="fa-solid fa-face-smile"></i>
       </h1>
     );

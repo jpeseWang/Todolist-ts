@@ -1,6 +1,6 @@
 .btn-group {
   color: white;
-  font-family: "Source Sans 3", sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   border: none;
   font-size: 120%;
   border-radius: 40px;
@@ -8,7 +8,7 @@
   margin: 10px;
   text-decoration: none;
   cursor: pointer;
-  font-family: "Roboto Slab", serif;
+  font-family: 'Roboto Slab', serif;
   font-weight: 700;
 }
 
@@ -18,20 +18,15 @@
 
 .btn-cancel {
   background-color: #6c757d;
-  color: white;
 }
 .btn-finish {
   background-color: #39da54;
-  color: white;
 }
 .btn-start {
-  color: white;
   background-color: #ff7561;
 }
-
 .btn-delete {
   background-color: #fe6463;
-  color: white;
   border: 2px solid #fe6463;
 }
 .btn-delete-2 {

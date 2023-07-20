@@ -15,3 +15,15 @@ code {
 :root {
   --background-color: #efdcd5;
 }
+.confirm-delete {
+  font-size: 100px;
+  font-weight: 200;
+  color: red;
+  margin-left: 100px;
+}
+.confirm-finish {
+  font-size: 100px;
+  font-weight: 200;
+  color: #39da54;
+  margin-left: 110px;
+}

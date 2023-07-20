@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 :root {
   --primary-color: #185ee0;
@@ -12,7 +12,7 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: rgba(#e6eef9, 0.5);
 }
 .container {
@@ -36,7 +36,7 @@ body {
   }
 }
 
-input[type="radio"] {
+input[type='radio'] {
   display: none;
 }
 
@@ -65,7 +65,7 @@ input[type="radio"] {
   transition: 0.15s ease-in;
 }
 
-input[type="radio"] {
+input[type='radio'] {
   &:checked {
     & + label {
       color: var(--primary-color);
@@ -77,7 +77,7 @@ input[type="radio"] {
   }
 }
 
-input[id="radio-1"] {
+input[id='radio-1'] {
   &:checked {
     & ~ .glider {
       transform: translateX(0);
@@ -85,7 +85,7 @@ input[id="radio-1"] {
   }
 }
 
-input[id="radio-2"] {
+input[id='radio-2'] {
   &:checked {
     & ~ .glider {
       transform: translateX(100%);
@@ -93,7 +93,7 @@ input[id="radio-2"] {
   }
 }
 
-input[id="radio-3"] {
+input[id='radio-3'] {
   &:checked {
     & ~ .glider {
       transform: translateX(200%);

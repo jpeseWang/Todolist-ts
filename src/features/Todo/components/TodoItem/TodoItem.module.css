@@ -25,7 +25,7 @@ ul {
   transform: scale(2);
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   position: relative;
   appearance: none;
   width: 20px;
@@ -38,13 +38,13 @@ input[type="checkbox"] {
   margin-right: 15px;
 }
 
-input:checked[type="checkbox"] {
+input:checked[type='checkbox'] {
   background: #7da6ff;
 }
 
-input[type="checkbox"]::after {
+input[type='checkbox']::after {
   position: absolute;
-  content: "";
+  content: '';
   width: 10px;
   height: 10px;
   top: 0;
@@ -56,7 +56,7 @@ input[type="checkbox"]::after {
   transition: 0.4s;
 }
 
-input:checked[type="checkbox"]::after {
+input:checked[type='checkbox']::after {
   left: 50%;
 }
 .finished {
