@@ -32,7 +32,7 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await updateTodo(todoId, text, deadline);
+    const res = await updateTodo(todoId, text, deadline, false);
     if (res !== null) {
       if (text.trim().length > 250) {
         toast.error('Task must not be longer than 250 characters!');

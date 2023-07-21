@@ -1,7 +1,7 @@
 import axios from 'axios';
 // import { Todo } from '../interfaces/interfaces';
 const instance = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com'
+  baseURL: 'https://64b9f6dc79b7c9def6c17476.mockapi.io'
 });
 
 export const fetchTodos = async (): Promise<any> => {
@@ -12,12 +12,15 @@ export const fetchTodos = async (): Promise<any> => {
 export const updateTodo = async (
   id: number,
   text: string,
-  deadline: string
+  deadline: string,
+  completed: boolean
 ): Promise<any> => {
   try {
-    const response = await axios.put(`/todos/${id}`, {
+    const response = await instance.put(`/todos/${id}`, {
+      id,
       text,
-      deadline
+      deadline,
+      completed
     });
     return response.data;
   } catch (error) {
@@ -25,8 +28,8 @@ export const updateTodo = async (
   }
 };
 
-export const addTodo = async (id: number, text: string, deadline: string): Promise<any> => {
-  const response = await instance.post('/todos', { id, text, deadline });
+export const addTodo = async (id: number, text: string, deadline: string, completed: boolean): Promise<any> => {
+  const response = await instance.post('/todos', { id, text, deadline, completed });
   return response.data;
 };
 

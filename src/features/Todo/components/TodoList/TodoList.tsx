@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { TodoContext, FILTER_OPTIONS } from '../../context/TodoContext';
 import { TodoItem } from '../TodoItem/TodoItem';
 import styles from './TodoList.module.css';
+import { fetchTodos } from '../../../../services/TodoService';
 interface TodoListProps {
   openUpdateModal: (
     todoId: number,
@@ -11,10 +12,17 @@ interface TodoListProps {
 }
 
 export const TodoList: React.FC<TodoListProps> = ({ openUpdateModal }) => {
-  const { state } = useContext(TodoContext);
+  const { state, dispatch } = useContext(TodoContext);
   const { todos, filter } = state;
-
   let filteredTodos = todos;
+
+  useEffect(() => {
+    const loadTodos = async () => {
+      const fetchedTodos = await fetchTodos();
+      dispatch({ type: 'SET_TODOS', payload: fetchedTodos });
+    };
+    loadTodos();
+  }, [dispatch]);
 
   if (filter === FILTER_OPTIONS.ACTIVE) {
     filteredTodos = todos.filter((todo) => !todo.completed);

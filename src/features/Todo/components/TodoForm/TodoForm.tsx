@@ -23,7 +23,7 @@ export const TodoForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await addTodo(Date.now(), text, deadline);
+    const res = await addTodo(Date.now(), text, deadline, false);
     if (res !== null) {
       if (text.trim().length > 0) {
         if (new Date(deadline).getTime() < Date.now()) {
@@ -32,7 +32,7 @@ export const TodoForm: React.FC = () => {
           toast.error('Task must not be than 250 characters!');
         } else {
           const newTodo: Todo = {
-            id: Date.now(),
+            id: 0,
             text,
             completed: false,
             deadline

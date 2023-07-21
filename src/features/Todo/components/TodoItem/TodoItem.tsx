@@ -7,6 +7,7 @@ import { ConfirmToggleModal } from '../../modal/ComfirmToggleModal';
 import { Button } from '../../../../components/Button/Button';
 import btn from '../../../../components/Button/Button.module.css';
 import classnames from 'classnames';
+import { updateTodo } from '../../../../services/TodoService';
 interface TodoItemProps {
   todo: {
     id: number
@@ -35,11 +36,14 @@ export const TodoItem: React.FC<TodoItemProps> = ({
       setShowConfirmToggleModal(true);
     }
   };
-  const handleConfirmToggle = () => {
+  const handleConfirmToggle = async () => {
+    const res = await updateTodo(todo.id, todo.text, todo.deadline, !todo.completed);
+    if (res !== null) {
     if (!todo.completed) {
       dispatch({ type: 'TOGGLE_TODO', payload: todo.id });
-    }
+    }}
     setShowConfirmToggleModal(false);
+    console.log(todo.id, todo.text, todo.deadline, todo.completed)
   };
   const handleDelete = () => {
     setShowConfirmDeleteModal(true);
