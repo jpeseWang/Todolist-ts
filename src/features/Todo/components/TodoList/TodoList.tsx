@@ -22,7 +22,7 @@ export const TodoList: React.FC<TodoListProps> = ({ openUpdateModal }) => {
       dispatch({ type: 'SET_TODOS', payload: fetchedTodos });
     };
     loadTodos();
-  }, [dispatch]);
+  }, [dispatch, state.todos.length]);
 
   if (filter === FILTER_OPTIONS.ACTIVE) {
     filteredTodos = todos.filter((todo) => !todo.completed);

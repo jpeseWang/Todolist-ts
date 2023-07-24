@@ -1,33 +1,33 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { TodoContext } from '../../context/TodoContext';
-import styles from './TodoItem.module.css';
-import { toast } from 'react-toastify';
-import { ConfirmDeleteModal } from '../../modal/ConfirmDeleteModal';
-import { ConfirmToggleModal } from '../../modal/ComfirmToggleModal';
-import { Button } from '../../../../components/Button/Button';
-import btn from '../../../../components/Button/Button.module.css';
-import classnames from 'classnames';
-import { updateTodo } from '../../../../services/TodoService';
+import React, { useContext, useEffect, useState } from "react";
+import { TodoContext } from "../../context/TodoContext";
+import styles from "./TodoItem.module.css";
+import { toast } from "react-toastify";
+import { ConfirmDeleteModal } from "../../modal/ConfirmDeleteModal";
+import { ConfirmToggleModal } from "../../modal/ComfirmToggleModal";
+import { Button } from "../../../../components/Button/Button";
+import btn from "../../../../components/Button/Button.module.css";
+import classnames from "classnames";
+import { updateTodo } from "../../../../services/TodoService";
 interface TodoItemProps {
   todo: {
-    id: number
-    text: string
-    completed: boolean
-    deadline: string
-  }
+    id: number;
+    text: string;
+    completed: boolean;
+    deadline: string;
+  };
   openUpdateModal: (
     todoId: number,
     todoText: string,
     todoDeadline: string
-  ) => void
+  ) => void;
 }
 
 export const TodoItem: React.FC<TodoItemProps> = ({
   todo,
-  openUpdateModal
+  openUpdateModal,
 }) => {
   const { dispatch } = useContext(TodoContext);
-  const [remainingTime, setRemainingTime] = useState('');
+  const [remainingTime, setRemainingTime] = useState("");
   const [showConfirmDeleteModal, setShowConfirmDeleteModal] = useState(false);
   const [showConfirmToggleModal, setShowConfirmToggleModal] = useState(false);
 
@@ -37,20 +37,26 @@ export const TodoItem: React.FC<TodoItemProps> = ({
     }
   };
   const handleConfirmToggle = async () => {
-    const res = await updateTodo(todo.id, todo.text, todo.deadline, !todo.completed);
+    const res = await updateTodo(
+      todo.id,
+      todo.text,
+      todo.deadline,
+      !todo.completed
+    );
     if (res !== null) {
-    if (!todo.completed) {
-      dispatch({ type: 'TOGGLE_TODO', payload: todo.id });
-    }}
+      if (!todo.completed) {
+        dispatch({ type: "TOGGLE_TODO", payload: todo.id });
+      }
+    }
     setShowConfirmToggleModal(false);
-    console.log(todo.id, todo.text, todo.deadline, todo.completed)
+    console.log(todo.id, todo.text, todo.deadline, todo.completed);
   };
   const handleDelete = () => {
     setShowConfirmDeleteModal(true);
   };
   const handleConfirmDelete = () => {
-    dispatch({ type: 'DELETE_TODO', payload: todo.id });
-    toast.info('Delete task successfully!');
+    dispatch({ type: "DELETE_TODO", payload: todo.id });
+    toast.info("Delete task successfully!");
     setShowConfirmDeleteModal(false);
   };
   const handleCancel = () => {
@@ -69,11 +75,11 @@ export const TodoItem: React.FC<TodoItemProps> = ({
       const currentTime = new Date().getTime();
       const timeDiff = deadlineTime - currentTime;
       if (timeDiff <= 0) {
-        setRemainingTime('Overdue');
+        setRemainingTime("Overdue");
       } else if (timeDiff !== 0 && todo.completed) {
-        setRemainingTime('Finished');
+        setRemainingTime("Finished");
       } else if (Number.isNaN(timeDiff)) {
-        setRemainingTime('No deadline');
+        setRemainingTime("No deadline");
       } else {
         const minutesLeft = Math.floor((timeDiff / (1000 * 60)) % 60);
         const hoursLeft = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
@@ -92,12 +98,12 @@ export const TodoItem: React.FC<TodoItemProps> = ({
       clearInterval(interval);
     };
   }, [todo.deadline]);
-  function getRemainingTimeColor (remainingTime: string) {
-    if (remainingTime === 'No deadline') {
+  function getRemainingTimeColor(remainingTime: string) {
+    if (remainingTime === "No deadline") {
       return styles.grey;
-    } else if (remainingTime === 'Overdue') {
+    } else if (remainingTime === "Overdue") {
       return styles.red;
-    } else if (remainingTime === 'Finished') {
+    } else if (remainingTime === "Finished") {
       return styles.green;
     } else {
       return styles.yellow;
@@ -107,28 +113,34 @@ export const TodoItem: React.FC<TodoItemProps> = ({
   return (
     <div>
       <li
-        className={styles['item-card']}
-        style={{ opacity: todo.completed ? '0.4' : '1' }}
+        className={styles["item-card"]}
+        style={{ opacity: todo.completed ? "0.4" : "1" }}
       >
         <>
-          <div className={styles['item-container']}>
+          <div className={styles["item-container"]}>
             <input
               type="checkbox"
               checked={todo.completed}
               onChange={handleToggle}
-              className={styles['check-box']}
+              className={styles["check-box"]}
             />
-            <span className={styles['item-content']}>
+            <span className={styles["item-content"]}>
               {todo.text}
               <br />
               <span className={getRemainingTimeColor(remainingTime)}>
                 {remainingTime}
               </span>
             </span>
-            <Button onClick={handleEdit} className={classnames(btn['btn-edit'], btn['btn-group'])}>
+            <Button
+              onClick={handleEdit}
+              className={classnames(btn["btn-edit"], btn["btn-group"])}
+            >
               <i className="fa-solid fa-pen-to-square"></i>
             </Button>
-            <Button onClick={handleDelete} className={classnames(btn['btn-delete-2'], btn['btn-group'])}>
+            <Button
+              onClick={handleDelete}
+              className={classnames(btn["btn-delete-2"], btn["btn-group"])}
+            >
               <i className="fa-solid fa-trash"></i>
             </Button>
           </div>

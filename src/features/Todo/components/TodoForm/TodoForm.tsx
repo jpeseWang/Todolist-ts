@@ -1,17 +1,19 @@
-import React, { useState, useContext } from 'react';
-import { Todo } from '../../../../interfaces/interfaces';
-import { TodoContext } from '../../context/TodoContext';
-import { toast } from 'react-toastify';
-import { Button } from '../../../../components/Button/Button';
-import btn from '../../../../components/Button/Button.module.css';
-import { Input } from '../../../../components/Input/Input';
-import ipt from '../../../../components/Input/Input.module.css';
-import classnames from 'classnames';
-import { addTodo } from '../../../../services/TodoService';
+import React, { useState, useContext } from "react";
+import { Todo } from "../../../../interfaces/interfaces";
+import { TodoContext } from "../../context/TodoContext";
+import { toast } from "react-toastify";
+import { Button } from "../../../../components/Button/Button";
+import btn from "../../../../components/Button/Button.module.css";
+import { Input } from "../../../../components/Input/Input";
+import ipt from "../../../../components/Input/Input.module.css";
+import classnames from "classnames";
+import { addTodo } from "../../../../services/TodoService";
 export const TodoForm: React.FC = () => {
-  const { dispatch } = useContext(TodoContext);
-  const [text, setText] = useState('');
-  const [deadline, setDeadline] = useState('');
+  const { state, dispatch } = useContext(TodoContext);
+  const [text, setText] = useState("");
+  const [deadline, setDeadline] = useState("");
+
+  const lastId = state.todos.length > 0 ? state.todos.length + 1 : 1;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
@@ -23,27 +25,27 @@ export const TodoForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await addTodo(Date.now(), text, deadline, false);
+    const res = await addTodo(lastId, text, deadline, false);
     if (res !== null) {
       if (text.trim().length > 0) {
         if (new Date(deadline).getTime() < Date.now()) {
-          toast.error('Deadline must be in the future!');
+          toast.error("Deadline must be in the future!");
         } else if (text.trim().length > 250) {
-          toast.error('Task must not be than 250 characters!');
+          toast.error("Task must not be than 250 characters!");
         } else {
           const newTodo: Todo = {
-            id: 0,
+            id: lastId + 1,
             text,
             completed: false,
-            deadline
+            deadline,
           };
-          dispatch({ type: 'ADD_TODO', payload: newTodo });
-          toast.success('Create new task successfully!');
-          setText('');
-          setDeadline('');
+          dispatch({ type: "ADD_TODO", payload: newTodo });
+          toast.success("Create new task successfully!");
+          setText("");
+          setDeadline("");
         }
       } else {
-        toast.error('Task must not be empty!');
+        toast.error("Task must not be empty!");
       }
     }
   };
@@ -53,8 +55,8 @@ export const TodoForm: React.FC = () => {
       // eslint-disable-next-line @typescript-eslint/no-misused-promises
       onSubmit={handleSubmit}
       onReset={() => {
-        setText('');
-        setDeadline('');
+        setText("");
+        setDeadline("");
       }}
     >
       <Input
@@ -73,7 +75,7 @@ export const TodoForm: React.FC = () => {
 
       <Button
         type="submit"
-        className={classnames(btn['btn-primary'], btn['btn-group'])}
+        className={classnames(btn["btn-primary"], btn["btn-group"])}
       >
         Add Task
       </Button>
